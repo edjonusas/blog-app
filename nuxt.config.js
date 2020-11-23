@@ -10,8 +10,7 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
-        href:
-          'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css',
       },
     ],
   },

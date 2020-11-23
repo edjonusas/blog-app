@@ -1,12 +1,12 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1 class="post-tilte">Title of Post</h1>
+      <h1 class="post-tilte">{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Las Upadated on XXX</div>
-        <div class="post-detail">Written by NAME</div>
+        <div class="post-detail">Last updated on: {{ loadedPost.updatedDate }}</div>
+        <div class="post-detail">Written by: {{ loadedPost.author }}</div>
       </div>
-      <p class="post-content">Content of the post</p>
+      <p class="post-content">{{ loadedPost.content }}</p>
     </section>
     <section class="post-feedback">
       <p>
@@ -18,7 +18,22 @@
 </template>
 
 <script>
-export default {}
+export default {
+  asyncData(context, callback) {
+    callback(null, {
+      loadedPost: {
+        id: '0',
+        title: 'Geras straipsnis (ID:' + context.params.id + ')',
+        previewText: 'Geras Straips...',
+        author: 'Edd',
+        updatedDate: new Date(),
+        content: 'Content of the post',
+        thumbnail:
+          'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmotionarray-portfolio.imgix.net%2Fpreview-90490-85a71cb06fc0583bd0976d8a58e16596-high.jpg&f=1&nofb=1',
+      },
+    })
+  },
+}
 </script>
 
 <style scoped>
