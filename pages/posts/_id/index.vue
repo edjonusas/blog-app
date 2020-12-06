@@ -18,20 +18,17 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  asyncData(context, callback) {
-    callback(null, {
-      loadedPost: {
-        id: '0',
-        title: 'Geras straipsnis (ID:' + context.params.id + ')',
-        previewText: 'Geras Straips...',
-        author: 'Edd',
-        updatedDate: new Date(),
-        content: 'Content of the post',
-        thumbnail:
-          'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmotionarray-portfolio.imgix.net%2Fpreview-90490-85a71cb06fc0583bd0976d8a58e16596-high.jpg&f=1&nofb=1',
-      },
-    })
+  asyncData(context) {
+    return axios
+      .get('https://newapp-73d23.firebaseio.com/posts/' + context.params.id + '.json')
+      .then((res) => {
+        return {
+          loadedPost: res.data,
+        }
+      })
+      .catch((e) => context.error(e))
   },
 }
 </script>

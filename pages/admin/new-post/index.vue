@@ -13,7 +13,10 @@ export default {
   methods: {
     onSubmitted(postData) {
       axios
-        .post('https://newapp-73d23.firebaseio.com/posts.json', postData)
+        .post('https://newapp-73d23.firebaseio.com/posts.json', {
+          ...postData,
+          updatedDate: new Date(),
+        })
         .then((result) => console.log(result))
         .catch((error) => console.log(error))
     },
